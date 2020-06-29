@@ -457,6 +457,7 @@ transition: all 1s ease;
     opacity: 0.3;
     top: 12rem;
     z-index: -1;
+    color: teal;
 }
 
 @keyframes blinking{
