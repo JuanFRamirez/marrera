@@ -3,6 +3,9 @@ let slideScene;
 let pageScene;
 let detailScene;
 const burger = document.querySelector('.hamburger');
+const  video = document.querySelector('.m-video');
+const about =  document.querySelector('.about');
+const abHeading = document.querySelector('.about-heading');
 
 function animateMain(){
     const initialHeader =  document.querySelector('.initial-header');
@@ -11,6 +14,8 @@ function animateMain(){
     const mainButton = document.querySelector('.main-button');
     const cube1 =  document.querySelector('.cube1');
     const cube2 =  document.querySelector('.cube2');
+    const triangle =  document.querySelector('.triangle');
+    
     const mainTl = gsap.timeline({
         defaults:{duration:1,ease:"power2.inOut"}
     });
@@ -20,6 +25,7 @@ function animateMain(){
     mainTl.fromTo(mainButton,{opacity:0,scale:2},{opacity:1,scale:1},"2.5");
     mainTl.fromTo(cube1,{rotate:'223',translateX:'200px',opacity:0},{rotate:'0',translateX:'0px',opacity:0.2},"3");
     mainTl.fromTo(cube2,{translateX:'-100px',opacity:0},{translateX:'0px',opacity:0.2},"3.2");
+    mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.2,scale:1},"3.5");
 }
 window.addEventListener('DOMContnetLoaded',animateMain());
 
@@ -205,3 +211,24 @@ burger.addEventListener('click',navToggle);
 window.addEventListener('mousemove',cursor);
 window.addEventListener('mouseover',activeCursor);
 
+//observer video
+
+const options={
+    root:null,
+    rootMargin:'5px',
+    threshold: 1.0
+};
+const observer =  new IntersectionObserver((entries,observer)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            about.style.translateX = 0;
+            entry.target.classList.add('visible-video');
+            entry.target.play();
+        }else{
+            return;
+        }
+       
+    });
+},options);
+
+observer.observe(video);
