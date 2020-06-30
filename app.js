@@ -6,6 +6,8 @@ const burger = document.querySelector('.hamburger');
 const  video = document.querySelector('.m-video');
 const about =  document.querySelector('.about');
 const abHeading = document.querySelector('.about-heading');
+const clientSection = document.querySelector('.clients');
+const cube4 =  document.querySelector('.cube4');
 
 function animateMain(){
     const initialHeader =  document.querySelector('.initial-header');
@@ -210,13 +212,20 @@ function detailAnimation(){
 burger.addEventListener('click',navToggle);
 window.addEventListener('mousemove',cursor);
 window.addEventListener('mouseover',activeCursor);
+clientSection.addEventListener('mouseenter',function(e){
+    cube4.classList.add('shrink');
+});
+
+clientSection.addEventListener('mouseleave',function(e){
+    cube4.classList.remove('shrink');
+});
 
 //observer video
 
 const options={
     root:null,
     rootMargin:'5px',
-    threshold: 1.0
+    threshold: 0.8
 };
 const observer =  new IntersectionObserver((entries,observer)=>{
     entries.forEach(entry=>{
@@ -231,4 +240,17 @@ const observer =  new IntersectionObserver((entries,observer)=>{
     });
 },options);
 
+const observer2 =  new IntersectionObserver((entries,observer)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('other-bg');
+            cube4.classList.add('cube-visible');
+        }else{
+            return;
+        }
+       
+    });
+});
+
 observer.observe(video);
+observer2.observe(clientSection);

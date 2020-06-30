@@ -89,7 +89,6 @@ main{
     justify-content: space-between;
     align-items: center;
     color: #353535;
-   /* background-color: #171818;*/
    background-color: #e9eceb;
 }
 
@@ -159,7 +158,6 @@ font-size: 5rem;
     width: 100%;
     height: 100%;
     background-color: #fff;
-    /*background-color: #e9eceb;*/
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -214,7 +212,7 @@ font-size: 5rem;
     transform: translate(-50%,-50%);
     pointer-events: none;
     transition: all 0.5s ease-in-out;
-    transition-property: background,transform;
+    transition-property: background, transform;
     transform-origin: 75% 75%;
 }
 
@@ -363,7 +361,7 @@ body.hide{
     position: relative;
     
 }
-.about{
+.about,.clients{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -379,7 +377,7 @@ body.hide{
 .initial-text{
     transform: rotateX(90deg);
 }
-.initial h1,.about h1{
+.initial h1,.about h1,.clients h1{
     font-family: 'Abril Fatface';
     font-size: 5rem;
     width: 70%;
@@ -411,11 +409,11 @@ body.hide{
     font-size: 1rem;
     color: #353535;
 }
-.about-heading{
+.about-heading,.clients-heading{
     text-align: center;
     font-size: 4rem;
 }
-.about-text{
+.about-text,.clients-text{
     margin-top: 0;
     padding: 3rem 0rem;
     font-size: 1rem;
@@ -458,6 +456,45 @@ transition: all 1s ease;
     top: 12rem;
     z-index: -1;
     color: teal;
+}
+.clients-heading{
+    color:#e4e8e7;
+}
+.clients{
+    background: linear-gradient(to left, rgba(0, 150, 136, 0.6),rgba(156, 39, 176, 0.58), rgba(244, 67, 54, 0.55));
+    min-height: 100%;
+    background-size: 300%;
+    background-position: left;
+    transition: background-position 2s linear;
+}
+.other-bg{
+    background-position: right;
+}
+.cube4{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: aliceblue;
+    display: flex;
+    top: 10%;
+    left: 10%;
+    z-index: 0;
+    transform: skewY(70deg);
+    opacity: 0;
+    filter: blur(10px);
+    transition: all 1.3s ease;
+}
+.cube-visible{
+    opacity: 0.2;
+    filter: blur(0);
+    transform: skewY(0);
+}
+.shrink{
+    transform: scale(0.5) rotate(180deg);
+}
+
+.clients-text{
+    color:#e9eceb;
 }
 
 @keyframes blinking{
