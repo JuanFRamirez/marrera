@@ -581,6 +581,9 @@ transition: all 1s ease;
     .step{
         display: none;
     }
+    .about,.clients{
+        padding: 5rem 3rem;
+    }
 }
 
 @media screen and (max-width:1024px){
@@ -619,6 +622,9 @@ transition: all 1s ease;
     text-align: center;
     }
     
+    .about,.clients{
+        padding: 5rem 3rem;
+    }
 
     .portrait{
         width: 20rem;
