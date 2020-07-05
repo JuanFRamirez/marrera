@@ -8,6 +8,30 @@ const about =  document.querySelector('.about');
 const abHeading = document.querySelector('.about-heading');
 const clientSection = document.querySelector('.clients');
 const cube4 =  document.querySelector('.cube4');
+const portrait =  document.querySelector('.portrait');
+const step2 =  document.querySelector('.step2');
+const step3 =  document.querySelector('.step3');
+const step4 =  document.querySelector('.step4');
+
+function animateSteps(){
+   
+        setTimeout(function(){
+            step2.classList.add('showme');
+        },2000);
+    setTimeout(function(){
+        if(step2.classList.contains('showme')){
+            step3.classList.add('showme');
+        }
+    },2500);
+
+    setTimeout(function(){
+        if(step3.classList.contains('showme')){
+            step4.classList.add('showme');
+        }
+    },3000);
+
+    
+}
 
 function animateMain(){
     const initialHeader =  document.querySelector('.initial-header');
@@ -29,7 +53,7 @@ function animateMain(){
     mainTl.fromTo(cube2,{translateX:'-100px',opacity:0},{translateX:'0px',opacity:0.2},"3.2");
     mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.2,scale:1},"3.5");
 }
-window.addEventListener('DOMContnetLoaded',animateMain());
+window.addEventListener('DOMContnetLoaded',animateMain(),animateSteps());
 
 function animateSlides(){
     controller = new ScrollMagic.Controller();
@@ -220,6 +244,15 @@ clientSection.addEventListener('mouseleave',function(e){
     cube4.classList.remove('shrink');
 });
 
+portrait.addEventListener('mouseover',function(e){
+    this.classList.add('skew');
+});
+
+portrait.addEventListener('mouseleave',function(e){
+    if(this.classList.contains('skew')){
+        this.classList.remove('skew');
+    }
+});
 //observer video
 
 const options={
