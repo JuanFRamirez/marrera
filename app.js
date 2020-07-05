@@ -49,9 +49,9 @@ function animateMain(){
     mainTl.fromTo(initialText,{rotateX:'90deg'},{rotateX:'0deg'},"2");
     mainTl.fromTo(coverScroll,{opacity:1},{opacity:0},"2.5");
     mainTl.fromTo(mainButton,{opacity:0,scale:2},{opacity:1,scale:1},"2.5");
-    mainTl.fromTo(cube1,{rotate:'223',translateX:'200px',opacity:0},{rotate:'0',translateX:'0px',opacity:0.2},"3");
-    mainTl.fromTo(cube2,{translateX:'-100px',opacity:0},{translateX:'0px',opacity:0.2},"3.2");
-    mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.2,scale:1},"3.5");
+    mainTl.fromTo(cube1,{rotate:'223',translateX:'200px',opacity:0},{rotate:'0',translateX:'0px',opacity:0.4},"3");
+    mainTl.fromTo(cube2,{translateX:'-100px',opacity:0},{translateX:'0px',opacity:0.4},"3.2");
+    mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.4,scale:1},"3.5");
 }
 window.addEventListener('DOMContnetLoaded',animateMain(),animateSteps());
 
@@ -245,11 +245,13 @@ clientSection.addEventListener('mouseleave',function(e){
 });
 
 portrait.addEventListener('mouseover',function(e){
+    this.src="./img/portraitwb2.png";
     this.classList.add('skew');
 });
 
 portrait.addEventListener('mouseleave',function(e){
     if(this.classList.contains('skew')){
+        this.src="./img/portraitwb.png";
         this.classList.remove('skew');
     }
 });

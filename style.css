@@ -499,6 +499,9 @@ transition: all 1s ease;
     align-items: center;
     margin: 3em 0em;
 }
+.portrait-container:hover{
+    cursor: crosshair;
+}
 .portrait{
     width: 35rem;
     padding: 2rem;
@@ -512,7 +515,6 @@ transition: all 1s ease;
     transition:background 0.5s ease-in-out;
 }
 .portrait:hover{
-    cursor: crosshair;
     background-color: #E91E63;
 }
 .other-bg{
