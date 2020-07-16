@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 body{
     /*background-color: #171818;*/
@@ -12,7 +15,7 @@ body{
     position: relative;
     z-index: 0;
 }
-p{
+.cube1,.cube2,p{
     font-weight: 600;
 }
 .step{
@@ -38,7 +41,7 @@ p{
     bottom: 7%;
     opacity: 0;
 }
-.cube1,.cube2,.triangle{
+.cube1,.cube2,.triangle,.check,.check2{
     position: absolute;
     z-index: -1;
 }
@@ -51,6 +54,36 @@ p{
     top: 5%;
     right: 2%;
     transform: rotate(223deg) translateX(200px);
+    transition: all 0.5 ease-in-out;
+    transition-property: background,border;
+}
+.check{
+    background-color:#cecccc;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    opacity: 0;
+    top: 5.89%;
+    right: 12.4%;
+    transform: translateX(100%);
+    transition: all .5s ease-in-out;
+    
+}
+.check2{
+    background-color: #cecccc;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    opacity: 0;
+    top: 8.57%;
+    right: 2%;
+    transform: translateX(100%);
+    transition: all .5s ease-in-out;
+    
+}
+.check-dice{
+    opacity: 0.4;
+    transform: translateX(0);
 }
 .cube2{
     border:1.5rem solid rgb(19, 203, 216);
@@ -63,6 +96,7 @@ p{
     border-radius: 50%;
     opacity: 0;
     transform: translate(-100px);
+    transition: all 0.8 ease-in;
 }
 .triangle{
     width: 0;
@@ -72,14 +106,15 @@ p{
 	border-bottom: 70px solid rgb(22, 230, 84);
     pointer-events: none;
     opacity: 0;
-    top: 13%;
+    top: 11%;
     right: 34%;
     transform: scale(0);
+    transition: all 1 ease-in;
 }
-main{
-    position: absolute;
+/*main{
+    position:absolute;
 }
-
+*/
 #logo{
     color: #353535;
     font-size: 'Abril Fatface';
@@ -201,6 +236,90 @@ font-size: 5rem;
 .nav-links h3{
     padding: 3rem 0rem;
 }
+.parallax{
+    width: 100%;
+    height: 100vh;
+    background-image: url('./img/chair.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin-top: 5rem;
+    background-attachment: fixed;
+    position: relative;
+}
+.parallax-container{
+    display: flex;
+    padding: 15em 8em;
+    flex-direction: column;
+    z-index: 2;
+}
+.parallax-text{
+    color: #ffff00;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(10px);
+    width: 94ch;
+    font-size: 1.3rem;
+    z-index: 3;
+    max-width: 100%;
+    word-break:break-word;
+}
+.feature{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    right: 0;
+    max-height: 80vh;
+    overflow-x: hidden;
+}
+.social{
+    font-size: 1.5rem;
+    color: #ffff00;
+    opacity: 0;
+    transform: translateY(10px);  
+}
+.social i{
+    padding: 3rem 1rem;
+    transition: all 0.5s ease;
+}
+.social i:hover{
+    transform: scale(1.5);
+}
+.feature-box{
+    display: flex;
+    z-index: 1;
+    margin: 2rem 0;
+    opacity: 0;
+    transform: translateX(100%);
+}
+.feature-box img{
+    width: 400px;
+    height: 600px;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+.feature-box img:hover{
+    transform: scale(1.1);
+    overflow: hidden;
+    cursor: pointer;
+}
+.broken{
+    width: 300px;
+    height: 254px;
+    position: absolute;
+    bottom: -8%;
+    left: 4%;
+    z-index: 1;
+}
+.white-border{
+    border-color:#fff !important;
+    transition: all 1s ease;
+}
 
 .contact{
     flex-basis: 30rem;
@@ -234,11 +353,11 @@ font-size: 5rem;
     height: 3rem;
     border: 2px solid #353535;
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
     transform: translate(-50%,-50%);
     pointer-events: none;
     transition: all 0.5s ease-in-out;
-    transition-property: background, transform;
+    transition-property: background, transform,border;
     transform-origin: 75% 75%;
 }
 
@@ -253,6 +372,33 @@ font-size: 5rem;
     background: #fff;
     transform: scale(3);
 }
+.videoplay{
+    background: #fff;
+    transform: scale(3);
+    border: none;
+    color: #000;
+}
+.videoplay::after{
+    content:'►';
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    font-size: .8rem;
+    transform: translate(-50%,-50%);
+}
+.wwd{
+    color: #ffff00;
+    transform: translateX(-100%);
+    opacity: 0;
+}.wwd ul{
+    list-style: decimal;
+    padding: 3rem 2rem;
+}
+.wwd ul li{
+    padding: 0.3rem 0rem;
+}
+
+
 
 .cursor-text{
     position: absolute;
@@ -382,7 +528,7 @@ body.hide{
     flex-direction: row;
     justify-content: center;
     padding: 5rem 10rem;
-    height: 80vh;
+    height: 85vh;
     margin-top: 3rem;
     position: relative;
     
@@ -393,7 +539,7 @@ body.hide{
     justify-content: center;
     padding: 5rem 10rem;
     height: 100%;
-    margin-top: 3rem;
+    margin-top: 5rem;
     position: relative;
 }
 
@@ -462,11 +608,14 @@ animation: blinking 1s ease-in-out infinite alternate;
 transition: all 1s ease;
 }
 .m-video{
-    width: 70%;
+    width: 90%;
     padding: 3rem 0rem;
     opacity: 0;
     transition: all 2s ease;
     transition-property: opacity;
+}
+.m-video:focus{
+    outline: none;
 }
 .visible-video{
     opacity: 1;
@@ -479,19 +628,22 @@ transition: all 1s ease;
     font-weight: 700;
     transform: rotateZ(180deg);
     opacity: 0.3;
-    top: 12rem;
+    top: 25rem;
     z-index: -1;
     color: teal;
 }
 .clients-heading{
     color:#e4e8e7;
 }
+
 .clients{
-    background: linear-gradient(to left, rgba(0, 150, 136, 0.6),rgba(156, 39, 176, 0.58), rgba(244, 67, 54, 0.55));
+    background: linear-gradient(to left, rgba(0, 0,0,0.82),rgb(156, 39, 176), rgba(244, 67, 54, 0.55));
     min-height: 100%;
     background-size: 300%;
     background-position: left;
     transition: background-position 2s linear;
+    border-left: 4em solid #e9eceb;
+    border-left-style: double;
 }
 .portrait-container{
     display: flex;
@@ -567,6 +719,18 @@ transition: all 1s ease;
     .hero-image{
         height: 50vh;
     }
+    .parallax{
+        background-attachment: scroll;
+    }
+    .parallax-text{
+        width: 100%;
+    }
+    .parallax-container{
+        padding: 0rem 3rem;
+    }
+    .social{
+        text-align: center;
+    }
     .fashion-text h1{
         font-size: 2rem;
         padding: 1rem 0rem;
@@ -590,6 +754,15 @@ transition: all 1s ease;
     main{
         width: 100%;
         margin: 0;
+    }
+    .feature{
+        top:40%;
+    }
+    .feature img{
+        width: 300px;
+        height: 400px;
+        object-fit: contain;
+        z-index: -1;
     }
     .step{
         display: none;
@@ -657,44 +830,19 @@ transition: all 1s ease;
         padding: 0;
         margin-top: 2rem;
     }
-    .explore{
-        width: 60%;
-        margin: auto;
+}
+@media screen and (max-width:900px){
 
+    .feature{
+        display: none;
     }
-    .detail-slide{
-        width: 100%;
+    .parallax-text{
         text-align: center;
+        margin-top: 50%;
     }
-    .fashion-text p{
-        margin-bottom: 5rem;
-        padding: 2rem;
-        text-align: center;
-    }
-    .fashion-text h1{
-        margin: 2rem 0rem;
-    }
-    .fashion-nr{
-        font-size: 0rem;
-    }
-    .nav-bar{
-        display: block;
-        padding-top: 8rem;
-    }
-    .nav-links{
-        font-size: 2rem;
-        text-align: center;
-        width: 100vw;
-    }
-    .contact h2{
-        font-size: 3rem;
-        text-align: center;
-        width: 100vw;
-    }
-    .contact p{
-        font-size: 1.2rem;
-        padding: 2rem;
-        text-align: center;
-        width: 100vw;
+    .broken{
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
     }
 }

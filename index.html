@@ -6,6 +6,7 @@
     <title>Travel Page</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body data-barba="wrapper">
     <header class="nav-header">
@@ -17,22 +18,51 @@
     </header>
     <main data-barba="container" data-barba-namespace="home">
         <div class="cube1"></div>
+        <div class="check"></div>
+        <div class="check2"></div>
         <div class="cube2"></div>
         <div class="triangle"></div>
         <section class="initial">
             <div class="home-header">
-                <h1 class="initial-header">LOREM IPSUM DOLOR, SIT AMET CONSECTETUR ADIPISCING ELIT.</h1>
-                <p class="initial-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et sunt ullam ea excepturi modi adipisci iusto, omnis aspernatur ad explicabo temporibus quisquam culpa id placeat officiis vero delectus aliquam veniam?</p>
-                <button class="main-button explore">Contact me</button>
+                <h1 class="initial-header">Profesionales del diseño gráfico y publicidad.</h1>
+                <p class="initial-text">Nuestro trabajo es ayudarte a generar comunicaciones precisas 100% efectivas, formando identidades corporativas fuertes permitiéndote destacar tu producto o marca.</p>
+                <a href="#about"><button class="main-button explore">Más sobre nosotros</button></a>
                 <img class="scroll-image blink" src="./img/scroll.png" alt="scroll down">
                 <div class="cover-scroll"></div>
             </div>
         </section>
 
-        <section class="about">
+        <section class="parallax">
+            <div class="parallax-container">
+                <p class="parallax-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam impedit deserunt harum aliquam soluta, commodi ab repellat veritatis. Odit, voluptates.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                <div class="wwd">
+                    <ul>
+                        <li>Animación</li>
+                        <li>Identidad corporativa</li>
+                        <li>Diseño gráfico</li>
+                        <li>3D arquitectónico</li>
+                        <li>Diagramación</li>
+                        <li>Material P.O.P</li>
+                        <li>Diseño web</li>
+                        <li>Jingles para radio</li>
+                        <li>Grabación y streaming</li>
+                    </ul>
+                </div>
+
+                <div class="social"><i class="fa fa-facebook" aria-hidden="true"></i><i class="fa fa-twitter" aria-hidden="true"></i><i class="fa fa-instagram" aria-hidden="true"></i></div>
+            </div>
+            <div class="feature">
+                <div class="feature-box">
+                    <img src="./img/fashion-img1.png" alt="">
+                </div>
+            </div>
+            <img class="broken" src="./img/forest.png" alt="">
+        </section>
+
+        <section class="about" id="about">
             <div class="about-header">
                 <h1 class="about-heading">Cool Designs</h1>
-                <video class="m-video" controls muted loop paused>
+                <video class="m-video" loop paused poster='./img/skull.jpg'>
                     <source src="./video/bg2.mp4">
 
                     </source>

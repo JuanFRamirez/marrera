@@ -12,6 +12,16 @@ const portrait =  document.querySelector('.portrait');
 const step2 =  document.querySelector('.step2');
 const step3 =  document.querySelector('.step3');
 const step4 =  document.querySelector('.step4');
+const portraitContainer = document.querySelector('.portrait-container');
+const aboutText = document.querySelector('.about-text');
+const explore =  document.querySelectorAll('.explore');
+const parallax =  document.querySelector('.parallax');
+const parallaxText =  document.querySelector('.parallax-text');
+const featureBox =  document.querySelector('.feature-box');
+const social =  document.querySelector('.social');
+const wwd =  document.querySelector('.wwd');
+const checkCube = document.querySelector('.check');
+const checkCube2 = document.querySelector('.check2'); 
 
 function animateSteps(){
    
@@ -110,8 +120,8 @@ const mouseTxt = mouse.querySelector('span');
 
 function cursor(e){
     
-    mouse.style.top = e.pageY + 'px';
-    mouse.style.left = e.pageX + 'px';
+    mouse.style.top = e.clientY + 'px';
+    mouse.style.left = e.clientX + 'px';
 }
 
 function activeCursor(e){
@@ -121,16 +131,16 @@ function activeCursor(e){
     }else{
         mouse.classList.remove('nav-active');
     }
-    if(item.classList.contains('explore')){
+    if(item.classList.contains('explore') && !mouse.classList.contains('explore-active')){
         mouse.classList.add('explore-active');
-        gsap.to('.title-swipe',1,{y:"0%"});
         mouseTxt.innerText = 'Click';
     }else{
         mouse.classList.remove('explore-active');
-        gsap.to('.title-swipe',1,{y:"100%"})
         mouseTxt.innerText = '';
     }
+    
 }
+
 
 function navToggle(e){
     if(!e.target.classList.contains('active')){
@@ -236,6 +246,31 @@ function detailAnimation(){
 burger.addEventListener('click',navToggle);
 window.addEventListener('mousemove',cursor);
 window.addEventListener('mouseover',activeCursor);
+window.addEventListener('scroll',showCheck);
+/*window.addEventListener('scroll',function(e){
+    mouse.style.top = e.clientY + 'px';
+});*/
+
+video.addEventListener('mouseover',function(e){
+
+    mouse.classList.add('videoplay');
+
+});
+
+video.addEventListener('mouseleave',function(e){
+
+    mouse.classList.remove('videoplay');
+
+});
+video.addEventListener('click',function(e){
+
+  this.setAttribute('controls','true');
+  this.setAttribute('paused','false');
+
+});
+
+
+
 clientSection.addEventListener('mouseenter',function(e){
     cube4.classList.add('shrink');
 });
@@ -255,6 +290,39 @@ portrait.addEventListener('mouseleave',function(e){
         this.classList.remove('skew');
     }
 });
+
+parallax.addEventListener('mouseover',function(e){
+    mouse.classList.add('white-border');
+});
+
+parallax.addEventListener('mouseleave',function(e){
+    mouse.classList.remove('white-border');
+});
+
+about.addEventListener('mouseover',function(e){
+    let All = document.querySelector('html');
+    All.style.cursor = 'none';
+});
+about.addEventListener('mouseleave',function(e){
+    let All = document.querySelector('html');
+    All.style.cursor = 'inherit';
+});
+
+function showCheck(e){
+
+    let cube1 = document.querySelector('.cube1');
+    if(window.pageYOffset >= 200){
+        checkCube.classList.add('check-dice');
+        checkCube2.classList.add('check-dice');
+        cube1.style.background = '#cecccc';
+        cube1.style.border = 'none';
+    }else{
+        checkCube.classList.remove('check-dice');
+        checkCube2.classList.remove('check-dice');
+        cube1.style.background = 'none';
+        cube1.style.border = '1.5rem solid rgb(230, 22, 160)';
+    }
+}
 //observer video
 
 const options={
@@ -267,7 +335,6 @@ const observer =  new IntersectionObserver((entries,observer)=>{
         if(entry.isIntersecting){
             about.style.translateX = 0;
             entry.target.classList.add('visible-video');
-            entry.target.play();
         }else{
             return;
         }
@@ -287,5 +354,44 @@ const observer2 =  new IntersectionObserver((entries,observer)=>{
     });
 });
 
+const observer3 =  new IntersectionObserver((entries,observer)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            const portraitTl = gsap.timeline({
+                defaults:{duration:1.5,ease:"ease-in"}
+            });
+            portraitTl.fromTo(portrait,0.5,{x:'200%'},{x:'0'});
+            portraitTl.fromTo(aboutText,1,{x:'-200%'},{x:'0'},"=-1");
+            observer3.unobserve(entry.target);
+        }else{
+            return;
+        }
+       
+    });
+});
+
+
+let options2 = {
+    root:null,
+    rootMargin:'0px',
+    threshold: 0.6
+}
+const observerParallax = new IntersectionObserver((entries,observer)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            const parallaxTl = gsap.timeline({
+                defaults:{duration:1,ease:"ease-in"}
+            });
+            parallaxTl.fromTo(parallaxText,1.2,{y:'10px',opacity:0},{y:'0px',opacity:1});
+            parallaxTl.fromTo(social,1.2,{y:'10px',opacity:0},{y:'0px',opacity:1},'-=1.2');
+            parallaxTl.fromTo(wwd,1.2,{x:'-100%',opacity:0},{x:'0px',opacity:1},'-=1.5');
+            parallaxTl.fromTo(featureBox,1,{x:'100%',opacity:0},{x:'0%',opacity:1},'=-1.2');
+            observerParallax.unobserve(entry.target);
+        }
+    })
+},options2)
+
 observer.observe(video);
 observer2.observe(clientSection);
+observer3.observe(portraitContainer);
+observerParallax.observe(parallax);
