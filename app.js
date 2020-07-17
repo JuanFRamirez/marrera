@@ -21,7 +21,8 @@ const featureBox =  document.querySelector('.feature-box');
 const social =  document.querySelector('.social');
 const wwd =  document.querySelector('.wwd');
 const checkCube = document.querySelector('.check');
-const checkCube2 = document.querySelector('.check2'); 
+const checkCube2 = document.querySelector('.check2');
+const preloader = document.querySelector('.preloader'); 
 
 function animateSteps(){
    
@@ -46,7 +47,6 @@ function animateSteps(){
 function animateMain(){
     const initialHeader =  document.querySelector('.initial-header');
     const initialText =  document.querySelector('.initial-text'); 
-    const coverScroll =  document.querySelector('.cover-scroll');
     const mainButton = document.querySelector('.main-button');
     const cube1 =  document.querySelector('.cube1');
     const cube2 =  document.querySelector('.cube2');
@@ -55,13 +55,12 @@ function animateMain(){
     const mainTl = gsap.timeline({
         defaults:{duration:1,ease:"power2.inOut"}
     });
-    mainTl.fromTo(initialHeader,{opacity:0},{opacity:1},"1.8");
-    mainTl.fromTo(initialText,{rotateX:'90deg'},{rotateX:'0deg'},"2");
-    mainTl.fromTo(coverScroll,{opacity:1},{opacity:0},"2.5");
-    mainTl.fromTo(mainButton,{opacity:0,scale:2},{opacity:1,scale:1},"2.5");
-    mainTl.fromTo(cube1,{rotate:'223',translateX:'200px',opacity:0},{rotate:'0',translateX:'0px',opacity:0.4},"3");
-    mainTl.fromTo(cube2,{translateX:'-100px',opacity:0},{translateX:'0px',opacity:0.4},"3.2");
-    mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.4,scale:1},"3.5");
+    mainTl.fromTo(initialHeader,{opacity:0},{opacity:1},"2.5");
+    mainTl.fromTo(initialText,{rotateX:'90deg'},{rotateX:'0deg'},"2.8");
+    mainTl.fromTo(mainButton,{opacity:0,scale:2},{opacity:1,scale:1},"2.8");
+    mainTl.fromTo(cube1,{rotate:'223',translateX:'200px',opacity:0},{rotate:'0',translateX:'0px',opacity:0.4},"3.2");
+    mainTl.fromTo(cube2,{translateX:'-100px',opacity:0},{translateX:'0px',opacity:0.4},"3.5");
+    mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.4,scale:1},"3.8");
 }
 window.addEventListener('DOMContnetLoaded',animateMain(),animateSteps());
 
@@ -246,10 +245,11 @@ function detailAnimation(){
 burger.addEventListener('click',navToggle);
 window.addEventListener('mousemove',cursor);
 window.addEventListener('mouseover',activeCursor);
-window.addEventListener('scroll',showCheck);
-/*window.addEventListener('scroll',function(e){
-    mouse.style.top = e.clientY + 'px';
-});*/
+
+    setTimeout(function(){
+        preloader.classList.add('yeet');
+    },2100);
+
 
 video.addEventListener('mouseover',function(e){
 
@@ -308,21 +308,6 @@ about.addEventListener('mouseleave',function(e){
     All.style.cursor = 'inherit';
 });
 
-function showCheck(e){
-
-    let cube1 = document.querySelector('.cube1');
-    if(window.pageYOffset >= 200){
-        checkCube.classList.add('check-dice');
-        checkCube2.classList.add('check-dice');
-        cube1.style.background = '#cecccc';
-        cube1.style.border = 'none';
-    }else{
-        checkCube.classList.remove('check-dice');
-        checkCube2.classList.remove('check-dice');
-        cube1.style.background = 'none';
-        cube1.style.border = '1.5rem solid rgb(230, 22, 160)';
-    }
-}
 //observer video
 
 const options={

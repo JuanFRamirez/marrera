@@ -15,6 +15,28 @@ body{
     position: relative;
     z-index: 0;
 }
+.preloader{
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+}
+.preloader p{
+    margin-top: 25%;
+    animation: rotate 2s linear infinite;
+    transform-origin: center;
+}
+.yeet{
+    opacity: 0;
+    z-index: -999;
+    transition: all 0.4s ease-in;
+}
 .cube1,.cube2,p{
     font-weight: 600;
 }
@@ -41,7 +63,7 @@ body{
     bottom: 7%;
     opacity: 0;
 }
-.cube1,.cube2,.triangle,.check,.check2{
+.cube1,.cube2,.triangle{
     position: absolute;
     z-index: -1;
 }
@@ -56,34 +78,6 @@ body{
     transform: rotate(223deg) translateX(200px);
     transition: all 0.5 ease-in-out;
     transition-property: background,border;
-}
-.check{
-    background-color:#cecccc;
-    width: 200px;
-    height: 200px;
-    pointer-events: none;
-    opacity: 0;
-    top: 5.89%;
-    right: 12.4%;
-    transform: translateX(100%);
-    transition: all .5s ease-in-out;
-    
-}
-.check2{
-    background-color: #cecccc;
-    width: 200px;
-    height: 200px;
-    pointer-events: none;
-    opacity: 0;
-    top: 8.57%;
-    right: 2%;
-    transform: translateX(100%);
-    transition: all .5s ease-in-out;
-    
-}
-.check-dice{
-    opacity: 0.4;
-    transform: translateX(0);
 }
 .cube2{
     border:1.5rem solid rgb(19, 203, 216);
@@ -554,32 +548,12 @@ body.hide{
     font-size: 5rem;
     width: 70%;
 }
-.scroll-image{
-    display: flex;
-    margin: 1rem auto;
-    width: 100px;
-    padding: 1rem;
-    position: absolute;
-    left: 50%;
-    bottom: 1%;
-    transform: translate(-50%, -1%);
-    opacity: 0;
-}
-.cover-scroll{
-    position: absolute;
-    left: 50%;
-    bottom: 1%;
-    transform: translate(-50%, -1%);
-    opacity: 1;
-    width: 200px;
-    height: 200px;
-    background-color: #e9eceb;
-}
 .initial p{
     margin-top: 2rem;
     padding: 3rem 0rem;
     font-size: 1rem;
     color: #353535;
+    width: 60%;
 }
 .about-heading,.clients-heading{
     text-align: center;
@@ -709,6 +683,11 @@ transition: all 1s ease;
     to{opacity: 1;}
 }
 
+@keyframes rotate{
+    from{transform: rotateY(0deg);}
+    to{transform: rotateY(360deg);}
+}
+
 @keyframes skewing{
     25%{transform: skewX(-13deg);}
     50%{transform: skewX(17deg);}
@@ -779,9 +758,7 @@ transition: all 1s ease;
     .initial p{
         font-size: 1rem;
         text-align: center;
-    }
-    .cover-scroll,.scroll-image{
-        display: none;
+        width: 100%;
     }
     .main-button{
         padding: 1rem 2rem;
