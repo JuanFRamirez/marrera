@@ -22,7 +22,8 @@ const social =  document.querySelector('.social');
 const wwd =  document.querySelector('.wwd');
 const checkCube = document.querySelector('.check');
 const checkCube2 = document.querySelector('.check2');
-const preloader = document.querySelector('.preloader'); 
+const preloader = document.querySelector('.preloader');
+const illustImage = document.querySelector('.illust img'); 
 
 function animateSteps(){
    
@@ -48,7 +49,6 @@ function animateMain(){
     const initialHeader =  document.querySelector('.initial-header');
     const initialText =  document.querySelector('.initial-text'); 
     const mainButton = document.querySelector('.main-button');
-    const cube1 =  document.querySelector('.cube1');
     const cube2 =  document.querySelector('.cube2');
     const triangle =  document.querySelector('.triangle');
     
@@ -56,11 +56,11 @@ function animateMain(){
         defaults:{duration:1,ease:"power2.inOut"}
     });
     mainTl.fromTo(initialHeader,{opacity:0},{opacity:1},"2.5");
-    mainTl.fromTo(initialText,{rotateX:'90deg'},{rotateX:'0deg'},"2.8");
-    mainTl.fromTo(mainButton,{opacity:0,scale:2},{opacity:1,scale:1},"2.8");
-    mainTl.fromTo(cube1,{rotate:'223',translateX:'200px',opacity:0},{rotate:'0',translateX:'0px',opacity:0.4},"3.2");
-    mainTl.fromTo(cube2,{translateX:'-100px',opacity:0},{translateX:'0px',opacity:0.4},"3.5");
-    mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.4,scale:1},"3.8");
+    mainTl.fromTo(initialText,{rotateX:'90deg'},{rotateX:'0deg'},"=-1");
+    mainTl.fromTo(mainButton,{opacity:0,scale:2},{opacity:1,scale:1},"=-1");
+    mainTl.fromTo(cube2,{scale:0,opacity:0},{scale:1,opacity:0.4},"3.5");
+    //mainTl.fromTo(triangle,{scale:0,opacity:0},{opacity:0.4,scale:1},"3.8");
+    mainTl.fromTo(illustImage,{opacity:0},{opacity:1},"0.3");
 }
 window.addEventListener('DOMContnetLoaded',animateMain(),animateSteps());
 
@@ -246,6 +246,9 @@ burger.addEventListener('click',navToggle);
 window.addEventListener('mousemove',cursor);
 window.addEventListener('mouseover',activeCursor);
 
+if(!preloader.classList.contains('yeet') && window.pageYOffset > 5){
+    window.scrollTo(0,0)
+}
     setTimeout(function(){
         preloader.classList.add('yeet');
     },2100);
@@ -266,6 +269,16 @@ video.addEventListener('click',function(e){
 
   this.setAttribute('controls','true');
   this.setAttribute('paused','false');
+    if (this.requestFullscreen && this.paused!=false) {
+      this.requestFullscreen();
+      console.log(0);
+    } else if (this.mozRequestFullScreen && this.paused!=false) { /* Firefox */
+      this.mozRequestFullScreen();
+    } else if (this.webkitRequestFullscreen && this.paused!=false) { /* Chrome, Safari and Opera */
+      this.webkitRequestFullscreen();
+    } else if (this.msRequestFullscreen && this.paused!=false) { /* IE/Edge */
+      this.msRequestFullscreen();
+    }
 
 });
 
@@ -312,8 +325,8 @@ about.addEventListener('mouseleave',function(e){
 
 const options={
     root:null,
-    rootMargin:'5px',
-    threshold: 0.8
+    rootMargin:'150px',
+    threshold: 0.7
 };
 const observer =  new IntersectionObserver((entries,observer)=>{
     entries.forEach(entry=>{
@@ -367,10 +380,10 @@ const observerParallax = new IntersectionObserver((entries,observer)=>{
             const parallaxTl = gsap.timeline({
                 defaults:{duration:1,ease:"ease-in"}
             });
-            parallaxTl.fromTo(parallaxText,1.2,{y:'10px',opacity:0},{y:'0px',opacity:1});
-            parallaxTl.fromTo(social,1.2,{y:'10px',opacity:0},{y:'0px',opacity:1},'-=1.2');
-            parallaxTl.fromTo(wwd,1.2,{x:'-100%',opacity:0},{x:'0px',opacity:1},'-=1.5');
-            parallaxTl.fromTo(featureBox,1,{x:'100%',opacity:0},{x:'0%',opacity:1},'=-1.2');
+            parallaxTl.fromTo(parallaxText,0.8,{y:'10px',opacity:0},{y:'0px',opacity:1});
+            parallaxTl.fromTo(social,0.8,{y:'10px',opacity:0},{y:'0px',opacity:1},'=-0.8');
+            parallaxTl.fromTo(wwd,0.8,{x:'-100%',opacity:0},{x:'0px',opacity:1},'=-0.8');
+            parallaxTl.fromTo(featureBox,1,{x:'100%',opacity:0},{x:'0%',opacity:1},'=-0.8');
             observerParallax.unobserve(entry.target);
         }
     })
